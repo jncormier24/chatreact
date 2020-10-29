@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Chat Rooms</title>
+    </head>
+
+    <body>
+        <p>What Chatroom would you like to enter?</p>
+        <input id="room-name-input" type="text" size="100"><br>
+        <span>Group names may only contain letters, digits, hyphens, and periods</span><br>
+        <input id="room-name-submit" type="button" value="Enter">
+
+        <script>
+            document.querySelector('#room-name-input').focus();
+            document.querySelector('#room-name-input').onkeyup = (e) => {
+                // if the user presses 'enter'
+                if (e.keyCode === 13) {
+                    document.querySelector('#room-name-submit').click();
+                }
+
+                document.querySelector('#room-name-submit').onclick = (e) => {
+                    let roomname = document.querySelector('#room-name-input').value;
+                    if (roomname) {
+                        window.location.pathname = `/chat/${roomname}/`;
+                    }
+                }
+            }
+        </script>
+    </body>
+</html>
